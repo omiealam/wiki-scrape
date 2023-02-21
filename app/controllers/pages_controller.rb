@@ -2,6 +2,8 @@ class PagesController < ApplicationController
   before_action :authenticate_user!, only: [:logout]
 
   def home
+    # TODO: Make footer work correctly on home page
+    render :layout=>'home'
   end
 
   def logout
@@ -12,5 +14,9 @@ class PagesController < ApplicationController
   def page
     @page_key = request.path[1..-1]
     render "pages/#{@page_key}"
+  end
+
+  # TODO: Move to seperate Controller and make accessible only to pro Users
+  def pro
   end
 end

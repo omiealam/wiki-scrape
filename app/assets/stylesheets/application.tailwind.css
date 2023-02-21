@@ -29,3 +29,17 @@
   @apply bg-green-400;
   background-color: #68D391;
 }
+
+.html { height: 100%; }
+
+.body {
+    min-height:100%;
+    position:relative;
+    padding-bottom:[footer-height]
+}
+
+.footer {
+    position: absolute;
+    left: 0 ; right: 0; bottom: 0;
+    height:[footer-height]
+}

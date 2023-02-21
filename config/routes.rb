@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+  # TODO: Have pro users automatically go to pro page
   root 'pages#home'
+  get '/pro/' => 'pages#pro'
 
   devise_for :users
   get 'logout', to: 'pages#logout', as: 'logout'

@@ -1,9 +1,10 @@
 module Billable
   extend ActiveSupport::Concern
 
-  included do
-    after_create :setup_stripe_customer
-  end
+  # TODO: Enable billing
+  # included do
+  #   after_create :setup_stripe_customer
+  # end
 
   # done after signup, for easy acquisition metrics inside Stripe UI
   def setup_stripe_customer
