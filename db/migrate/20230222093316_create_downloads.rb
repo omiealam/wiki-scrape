@@ -1,7 +1,7 @@
 class CreateDownloads < ActiveRecord::Migration[7.0]
   def change
     create_table :downloads do |t|
-      t.object :page
+      t.string :page_url
       t.boolean :belongs_to_pro
       t.integer :user_id
       t.boolean :text_requested
