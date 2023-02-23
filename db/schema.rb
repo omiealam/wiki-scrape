@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_22_101451) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_23_081446) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -34,8 +34,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_22_101451) do
     t.boolean "belongs_to_pro"
     t.integer "user_id"
     t.boolean "text_requested"
-    t.boolean "images_requested"
-    t.boolean "links_requested"
+    t.boolean "images_requested", default: false
+    t.boolean "links_requested", default: false
     t.boolean "download_completed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
