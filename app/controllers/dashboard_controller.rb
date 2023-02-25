@@ -2,7 +2,10 @@ class DashboardController < ApplicationController
   before_action :authenticate_user!
   before_action :set_flashes
 
+  # TODO: : make user be paying subscriber to access this
+
   def index
+    @downloads = Download.all.where(user_id: current_user.id)
   end
 
   private

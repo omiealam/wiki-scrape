@@ -22,4 +22,12 @@ module ApplicationHelper
 
     "<strong style='color: #{color}'>#{msg}</strong>".html_safe
   end
+
+  def boolean_to_yes_no(bool)
+      if bool
+        "Yes"
+      else
+        "No"
+      end
+  end
 end
