@@ -12,42 +12,44 @@
 </div>
 
 <%# TODO: form_for(Download.new) %>
-<div class="max-w-lg mx-auto">
-  <div>
-    <label for="recipient_handle" class="block text-sm font-medium text-gray-700"></label>
-    <div class="flex rounded-md shadow-sm">
-      <input type="text" required name="" id="" class="block w-full min-w-0 flex-1 rounded-l-md rounded-r-md border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="Wikipedia article title or URL">
+<%= form_for(Download.new) do |f| %>
+  <%= f.hidden_field :is_pro, :value => true %>
+  <div class="max-w-lg mx-auto">
+    <div>
+      <label for="input" class="block text-sm font-medium text-gray-700"></label>
+      <div class="flex rounded-md shadow-sm">
+        <input type="text" required name="download[input]" id="download_input" class="block w-full min-w-0 flex-1 rounded-l-md rounded-r-md border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="Wikipedia article title or URL">
+      </div>
     </div>
-  </div>
 
-  <div class="pt-8 mb-10">
+    <div class="pt-8 mb-10">
       <div class="mt-1">
         <fieldset>
           <div class="mt-4 space-y-4">
             <div class="relative flex items-start">
               <div class="flex h-5 items-center">
-                <input id="comments" name="comments" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                <%= f.check_box :text_requested, class:"h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" %>
               </div>
               <div class="ml-3 text-sm">
-                <label for="comments" class="font-medium text-gray-700">Text</label>
+                <%= f.label :text_requested, "Text" ,class:"font-medium text-gray-700" %>
                 <p class="text-gray-500">Get all the text from the page, beautifully formatted.</p>
               </div>
             </div>
             <div class="relative flex items-start">
               <div class="flex h-5 items-center">
-                <input id="candidates" name="candidates" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                <%= f.check_box :images_requested, class:"h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" %>
               </div>
               <div class="ml-3 text-sm">
-                <label for="candidates" class="font-medium text-gray-700">Images</label>
+                <%= f.label :images_requested, "Images" ,class:"font-medium text-gray-700" %>
                 <p class="text-gray-500">Download all the images from the page in their highest resolution.</p>
               </div>
             </div>
             <div class="relative flex items-start">
               <div class="flex h-5 items-center">
-                <input id="offers" name="offers" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                <%= f.check_box :links_requested, class:"h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" %>
               </div>
               <div class="ml-3 text-sm">
-                <label for="offers" class="font-medium text-gray-700">External links</label>
+                <%= f.label :links_requested, "External links" ,class:"font-medium text-gray-700" %>
                 <p class="text-gray-500">Get a list of all the links from the page.</p>
               </div>
             </div>
@@ -55,15 +57,15 @@
         </fieldset>
       </div>
     </div>
-  </div>
 
-  <div class="text-center">
-    <button type="submit" class="mt-1 inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-      <!-- Heroicon name: mini/envelope -->
-      <svg class="-ml-1 mr-3 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke="white" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/>
-      </svg>
-      Download data
-    </button>
+    <div class="text-center">
+      <button type="submit" class="mt-1 inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+        <!-- Heroicon name: mini/envelope -->
+        <svg class="-ml-1 mr-3 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke="white" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/>
+        </svg>
+        Download data
+      </button>
+    </div>
   </div>
-</div>
+<% end %>
