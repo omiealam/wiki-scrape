@@ -12,25 +12,28 @@
   </div>
 </div>
 
-<%# TODO: form_for(Download.new) %>
-<div class="max-w-lg mx-auto">
-  <div>
-    <label for="recipient_handle" class="block text-sm font-medium text-gray-700"></label>
-    <div class="flex rounded-md shadow-sm">
-      <input type="text" required name="" id="" class="block w-full min-w-0 flex-1 rounded-l-md rounded-r-md border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="Wikipedia article title or URL">
+<%= form_for(Download.new) do |f| %>
+  <%= f.hidden_field :is_pro, :value => nil %>
+  <%= f.hidden_field :text_requested, :value => true %>
+  <div class="max-w-lg mx-auto">
+    <div>
+      <label for="input" class="block text-sm font-medium text-gray-700"></label>
+      <div class="flex rounded-md shadow-sm">
+        <input type="text" required name="download[input]" id="download_input" class="block w-full min-w-0 flex-1 rounded-l-md rounded-r-md border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="Wikipedia article title or URL">
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <button type="submit" class="mt-1 inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+        <!-- Heroicon name: mini/envelope -->
+        <svg class="-ml-1 mr-3 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke="white" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/>
+        </svg>
+        Download text
+      </button>
     </div>
   </div>
-
-  <div class="text-center">
-    <button type="submit" class="mt-1 inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-      <!-- Heroicon name: mini/envelope -->
-      <svg class="-ml-1 mr-3 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke="white" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/>
-      </svg>
-      Download text
-    </button>
-  </div>
-</div>
+<% end %>
 
 <div class="mt-14">
   <div class="mx-auto max-w-4xl py-16 px-4 text-center sm:py-20 sm:px-6 lg:px-8">
