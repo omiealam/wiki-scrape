@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   devise_for :users
   get 'logout', to: 'pages#logout', as: 'logout'
 
-  resources :downloads, only: [:create, :index, :destroy]
+  resources :downloads, only: [:create, :index, :destroy, :show]
   resources :subscribe, only: [:index]
   resources :dashboard, only: [:index]
   resources :account, only: [:index, :update]
