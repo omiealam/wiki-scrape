@@ -28,8 +28,11 @@ module WikiScrape
     # mailers via postmark
     config.action_mailer.default_url_options = { host: ENV['base_url'] }
     config.action_mailer.default_options = { from: ENV['admin_email'] }
-    config.action_mailer.delivery_method = :postmark
-    config.action_mailer.postmark_settings = { api_token: ENV['postmark_api_token'] }
+    config.action_mailer.delivery_method = :mailgun
+    config.action_mailer.mailgun_settings = {
+      api_key: ENV['mailgun_api_token'],
+      domain: ENV['mailgun_domain']
+    }
 
     # serve images from asset pipeline in mailers
     config.asset_host = ENV['base_url']
