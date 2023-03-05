@@ -35,4 +35,7 @@ task :sync_with_stripe => :environment do
   end
 end
 
-# TODO: Make job to delete free Downloads after 5 mins and paid Downloads after 24 hours
+# Deletes free Downloads after 5 minutes
+task :delete_free_downloads => :environment do
+  Download.where('created_at <= ?', 5.minutes.ago).destroy_all
+end
