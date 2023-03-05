@@ -35,7 +35,12 @@ task :sync_with_stripe => :environment do
   end
 end
 
-# Deletes free Downloads after 5 minutes
+# Deletes free Downloads after 5 minutes (TODO: enable once I understand Heroku pricing)
 task :delete_free_downloads => :environment do
-  Download.where('created_at <= ?', 5.minutes.ago).destroy_all
+  Download.where("belongs_to_pro = ?", false).where('created_at <= ?', 5.minutes.ago).destroy_all
+end
+
+# Deletes all (pro included) Downloads that are older than 24 hours
+task :delete_old_downloads => :environment do
+  Download.where('created_at <= ?', 24.hours.ago).destroy_all
 end
