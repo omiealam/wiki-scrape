@@ -16,7 +16,6 @@ class PagesController < ApplicationController
     render "pages/#{@page_key}"
   end
 
-  # TODO: Move to seperate Controller and make accessible only to pro Users
   def pro
   end
 end
