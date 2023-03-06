@@ -4,4 +4,8 @@ class User < ApplicationRecord
   include Billable
 
   scope :subscribed, -> { where(paying_customer: true) }
+
+  def finished_onboarding?
+    stripe_subscription_id?
+  end
 end
