@@ -39,7 +39,7 @@ class BillingPortalController < ApplicationController
   def modify_subscription
     session = Stripe::BillingPortal::Session.create({
       customer: current_user.stripe_customer_id,
-      return_url: "#{ENV['base_url']}/#{account_index_path}?updated=true"
+      return_url: "#{ENV['base_url']}#{account_index_path}?updated=true"
     })
 
     session.url
