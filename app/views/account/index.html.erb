@@ -10,7 +10,11 @@
           Billing Status: <%= red_green_message(current_user.paying_customer?, 'Active', 'Inactive') %><br>
         </div>
         <div class="flex-shrink">
-          <%= link_to 'Manage >>', billing_portal_path, class: "font-medium text-indigo-500" %>
+          <% if current_user.finished_onboarding? %>
+            <%= link_to 'Manage >>', billing_portal_path, class: "font-medium text-indigo-500" %>
+          <% else %>
+            <%= link_to 'Start subscription >>', "javascript:beginSubscription()", class: "font-medium text-indigo-500" %>
+          <% end %>
         </div>
       </div>
 
@@ -42,3 +46,23 @@
     <div></div>
   </div>
 </div>
+
+<script type="text/javascript">
+  var beginSubscription = function() {
+    console.log('building subscription...');
+
+    $.ajax({
+      url: '<%= billing_portal_index_path %>',
+      method: 'POST',
+      dataType: 'json',
+      data: {},
+      success: function(data) {
+        console.log('success! portal url: ', data.url)
+        window.location.href = data.url;
+      },
+      error: function(data) {
+        window.alert('Sorry, something went wrong. Please try again.');
+      }
+    })
+  }
+</script>
