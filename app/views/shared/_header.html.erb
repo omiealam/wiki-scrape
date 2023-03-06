@@ -27,7 +27,7 @@
           <%= link_to 'Account', account_index_path, class: nav_link_classes %>
           <%= link_to 'Logout', logout_path, class: nav_link_classes %>
         <% else %>
-          <%= mail_to "omar@omiealam.com", "Contact", class: nav_link_classes %>
+          <%= mail_to "support@scrape.wiki", "Contact", class: nav_link_classes %>
           <%= link_to 'Login for Pro Users', new_user_session_path, class: nav_link_classes %>
           <%= link_to 'Signup', new_user_registration_path, class: 'ml-8 whitespace-nowrap text-base font-medium inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700' %>
         <% end %>
