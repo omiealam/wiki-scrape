@@ -12,5 +12,5 @@ module Onboardable
   def send_welcome_email
     UserMailer.welcome(self).deliver
   end
-  # handle_asynchronously :send_welcome_email
+  handle_asynchronously :send_welcome_email
 end
