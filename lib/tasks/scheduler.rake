@@ -35,6 +35,7 @@ task :sync_with_stripe => :environment do
   end
 end
 
+# TODO: Make these 2 tasks work with Google Cloud Storage (using purge)
 # Deletes free Downloads after 5 minutes (TODO: enable once I understand Heroku pricing)
 task :delete_free_downloads => :environment do
   Download.where("belongs_to_pro = ?", false).where('created_at <= ?', 5.minutes.ago).destroy_all

@@ -16,6 +16,8 @@ module Billable
 
     update(stripe_customer_id: customer.id)
   end
+  # Don't handle asynchronously (See 16:45 of Backend - Intro to delayed jobs)
+  # handle_asynchronously :set_stripe_subscription
 
   # done after user adds payment method, for easy CVR metrics inside Stripe UI
   def set_stripe_subscription

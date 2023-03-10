@@ -69,6 +69,7 @@ class DownloadsController < ApplicationController
 
   def create_paid_download
     @download = Download.create(page_url: @page.fullurl, page_title: @page.title, belongs_to_pro: true, user_id: current_user.id, text_requested: create_params[:text_requested], images_requested: create_params[:images_requested], links_requested: create_params[:links_requested])
+    # TODO: use .delay(:priority => n) to give Pro download requests priority 
     @download.delay.perform_download
     redirect_to "/dashboard", notice: "That page has been added to the download queue"
   end
