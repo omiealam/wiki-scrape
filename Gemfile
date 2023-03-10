@@ -50,3 +50,5 @@ group :test do
   gem 'shoulda-matchers'
   gem 'faker'
 end
+
+gem "google-cloud-storage", "~> 1.44"
